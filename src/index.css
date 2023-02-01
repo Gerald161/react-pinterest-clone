@@ -1,0 +1,360 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    overflow-x: hidden;
+}
+
+nav{
+    display: flex;
+    padding: 20px 10px;
+    justify-content: space-between;
+}
+
+nav a{
+    flex: 1;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+nav a h3{
+    font-size: 1.3em;
+    color: #009579;
+ }
+
+nav .logo_container img{
+    position: absolute;
+    left: 120px;
+    top: 25px;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    object-fit: cover;
+}
+
+.picture_search_form{
+    flex: 4;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    padding: 10px 20px;
+    background: #E5E4E2;
+}
+
+.picture_search_form #search_box{
+    flex: 1;
+    /* position: absolute; */
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    display: flex;
+}
+
+.picture_search_form #search_box svg{
+    flex: 3;
+    padding: 10px;
+    color: dodgerblue;
+}
+
+.picture_search_form #search_box input{
+    flex: 8;
+    outline: none;
+    border: none;
+    /* background: #E5E4E2; */
+    background: white;
+    padding: 10px;
+    margin-top: 3px;
+}
+
+/* .picture_search_form #search_box input:focus{
+    background: white;
+    border: solid 1px;
+} */
+
+nav .navigation_links{
+    flex: 3;
+    position: relative;
+    left: 60px;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav .navigation_links a{
+    text-decoration: none;
+    color: black;
+    transition: color 0.5s;
+}
+
+nav .navigation_links a:hover{
+    color: orangered;
+}
+
+/* for the homepage */
+.popular_searches{
+    padding: 3px 10px 10px 10px;
+    display: flex;
+}
+
+.popular_searches h3{
+    flex: 1;
+    border-right: solid 2px #ccc;
+}
+
+.popular_searches .popular_links{
+    flex: 7;
+    padding-left: 10px;
+}
+
+.popular_links a{
+    text-decoration: none;
+    color: gray;
+    padding: 0 10px;
+    transition: color 0.5s;
+}
+
+.popular_links a:hover{
+    color: dodgerblue;
+}
+
+.landing_screen{
+    width: 100%;
+    height: 90vh;
+    position: relative;
+    overflow: hidden;
+    background: url('1.jpg') no-repeat center/cover fixed; 
+}
+
+.landing_screen .dark_cover{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.dark_cover h1, .dark_cover p{
+    color: white;
+    position: relative;
+    bottom: 50px;
+}
+
+input[type='file']{
+	display: none;
+}
+
+label{
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.2em;
+	font-family: "Monserrat", sans-serif;
+}
+
+.home_tabs{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+.home_tabs a{
+    margin: 10px;
+    font-size: 1.3em;
+    padding: 10px;
+    color: black;
+    text-decoration: none;
+    transition: all 0.5s;
+}
+
+.home_tabs a:hover{
+    color: dodgerblue;
+}
+
+.home_tabs .selected{
+    color: dodgerblue;
+    border-bottom: solid dodgerblue 3px;
+}
+
+.grid_images{
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-auto-rows: 300px;
+    grid-auto-flow: dense;
+}
+
+.image_container{
+    position: relative;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.image_container:hover .download_options_container{
+    opacity: 1;
+}
+
+.image_container img{
+    position: absolute;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.download_options_container{
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    height: 100%;
+    pointer-events: none;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.download_options_container a{
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: white;
+    transition: all 0.5s;
+}
+
+.download_options_container a:hover{
+    color: dodgerblue;
+}
+
+.featured_horizontal{
+    grid-column: span 2;
+}
+
+.featured_small{
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+.featured_vertical{
+    grid-row: span 2;
+}
+
+.featured_big{
+    grid-row: span 2;
+    grid-column: span 2;
+}
+
+.loading{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+}	
+
+/*first color here #009579*/
+
+.loading::after{
+    content: "";
+    width: 30px;
+    height: 30px;
+    border: 5px solid #dddddd;
+    border-top-color: #fe8f04;
+    border-radius: 50%;
+    animation: loading 1s linear infinite;
+}
+
+@keyframes loading{
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+.images_grid{
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-auto-rows: 300px;
+}
+
+.image_grid{
+    position: relative;
+}
+
+.image_grid img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* stuff I am working on */
+
+#results{
+    background: rgba(0,0,0,0.6);
+    z-index: 20000;
+    position: absolute;
+    top: 67px;
+    width: 47vw;
+    display: flex;
+    flex-direction: column;
+}
+
+#results a{
+    transition: all 0.5s;
+    color: white;
+}
+
+#results a:hover{
+    color: dodgerblue;
+}
+
+.reloadImages{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: dodgerblue;
+    border-radius: 100%;
+    height: 80px;
+    width: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 500000;
+    cursor: pointer;
+}
+
+/* upload stuff here */
+.formContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.formContainer form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.formContainer form input{
+    padding: 12px 20px;
+}
+
+.formContainer form button{
+    background: dodgerblue;
+    transition: all 0.5s;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    cursor: pointer;
+}
