@@ -11,14 +11,18 @@ const Navbar = (props) => {
     const [word_to_search, SetWordToSearchState] = useState('');
 
     async function handleImageChange(e){
+        props.updateScreenState()
+
         const file = e.target.files[0];
 
-        props.updateScreenState()
-    
-        await imageSearch(file).catch(error =>{
-            props.resetScreenState()
-            alert("Please check internet connection")
-        });
+        if(file){
+            await imageSearch(file).catch(error =>{
+                props.resetScreenState()
+                alert("Please check internet connection")
+            });
+        }else{
+            alert("Please select an image")
+        }
     }
 
     const API_HOST = 'http://127.0.0.1:8000';
@@ -42,7 +46,7 @@ const Navbar = (props) => {
         }else{
             var data = await response.json();
 
-            props.updateScreenState();
+            props.resetScreenState();
 
             navigate(
                 '/search',

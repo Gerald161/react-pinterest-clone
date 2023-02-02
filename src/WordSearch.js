@@ -2,7 +2,7 @@ import { useParams } from "react-router";
 import React from 'react';
 import { useEffect, useState } from 'react';
 
-const WordSearch = () => {
+const WordSearch = (props) => {
     const [image_urls, setImageUrls] = useState([]);
 
     const {word} = useParams();
@@ -12,6 +12,8 @@ const WordSearch = () => {
     }, [])
 
     async function getRelevantQueries(){
+        props.updateScreenState()
+
         const API_HOST = 'http://127.0.0.1:8000';
 
         let fd = new FormData();
@@ -32,14 +34,21 @@ const WordSearch = () => {
         var data = await response.json();
 
         setImageUrls(data)
+
+        props.resetScreenState()
     }
 
     return ( 
         <div className="search_page_queries">
-            <h2 style={{textAlign: 'center', margin: '20px'}}>Top images similar to {word.replaceAll('-', " ")}</h2>
+            {
+                props.changeScreen === false?
+                <h2 style={{textAlign: 'center', margin: '20px'}}>Top images similar to {word.replaceAll('-', " ")}</h2>
+                :
+                <p></p>
+            }
             <div className="grid_images">
             {
-                image_urls.length !== 0 ?
+                props.changeScreen === false?
                 image_urls.map((image, index)=>
                     <div key={image["image"]} className={
                         index+1 === 2 ? "image_container featured_horizontal": 

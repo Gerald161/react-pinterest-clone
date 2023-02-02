@@ -11,11 +11,7 @@ function App() {
   const [changeScreen, setChangeScreen] = useState(false);
 
   function updateScreenState(){
-    if(changeScreen === true){
-        setChangeScreen(false)
-    }else{
-        setChangeScreen(true)
-    }
+    setChangeScreen(true)
   }
 
   function resetScreenState(){
@@ -31,7 +27,7 @@ function App() {
             <Route exact path="/" element={<Home changeScreen={changeScreen} resetScreenState={resetScreenState}/>}></Route>
             <Route path="/search" element={<Search changeScreen={changeScreen}/>}></Route>
             <Route exact path="/upload" element={<Upload/>}></Route>
-            <Route path="/search/:word" element={<WordSearch/>}></Route>
+            <Route path="/search/:word" element={<WordSearch changeScreen={changeScreen} updateScreenState={updateScreenState} resetScreenState={resetScreenState}/>}></Route>
           </Routes>
         </div>
       </div>

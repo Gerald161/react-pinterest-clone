@@ -10,14 +10,14 @@ const Search = (props) => {
 
     useEffect(()=>{
         setAllImages(location.state.data)
-    })
+    }, [])
 
     return ( 
         <div className="search_page_queries">
             <h2 style={{textAlign: 'center', margin: '20px'}}>Top images similar to query</h2>
             <div className="grid_images">
             {
-                props.changeScreen !== false ? 
+                props.changeScreen === false ? 
                     images.map((image, index)=>
                         <div key={index} 
                             className={
